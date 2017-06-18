@@ -115,10 +115,11 @@ stream_writer_push_key(VALUE self, VALUE key) {
 }
 
 /* Document-method: push_object
- * call-seq: push_object(key=nil)
+ * call-seq: push_object(obj, key=nil)
  *
  * Pushes an object onto the JSON document. Future pushes will be to this object
  * until a pop() is called.
+ *
  * - *key* [_String_] the key if adding to an object in the JSON document
  */
 static VALUE
