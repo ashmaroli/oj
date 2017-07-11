@@ -8,9 +8,6 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
-#if IS_WINDOWS
-#include <timegm.h>
-#endif
 
 #include "oj.h"
 #include "err.h"
@@ -403,18 +400,19 @@ time_parse(const char *s, int len) {
 	    return Qnil;
 	}
     }
+#if IS_WINDOWS
+#if 0
+    secs = (time_t)_mkgmtime(&tm);
+#else
+    secs = (time_t)mktime(&tm);
+    memset(&tm, 0, sizeof(tm));
+    tm.tm_year = 70;
+    tm.tm_mday = 1;
+    secs -= (time_t)mktime(&tm);
+#endif
+#else
     secs = (time_t)timegm(&tm);
-
-    {
-	time_t	foo;
-	
-	memset(&tm, 0, sizeof(tm));
-	tm.tm_year = 70;
-	tm.tm_mday = 1;
-	foo = (time_t)mktime(&tm);
-	printf("*** seconds: %ld  hours: %ld\n", foo, foo / 3600);
-    }
-
+#endif
     return rb_funcall(rb_time_nano_new(secs, nsecs), oj_utc_id, 0);
 }
 
