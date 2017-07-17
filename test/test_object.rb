@@ -576,7 +576,7 @@ class ObjectJuice < Minitest::Test
     # The fractional seconds are not always recreated exactly which causes a
     # mismatch so instead the seconds, nsecs, and gmt_offset are checked
     # separately along with utc.
-    json = Oj.dump(t, :mode => :object, :time_format => :unix_zone)
+    json = Oj.dump(t, :mode => :object)
     #puts json
     loaded = Oj.object_load(json);
     assert_equal(t.tv_sec, loaded.tv_sec)
