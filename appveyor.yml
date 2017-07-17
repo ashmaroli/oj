@@ -45,5 +45,3 @@ matrix:
     - RUBY_VERSION: 23-x64
     - RUBY_VERSION: 22
     - RUBY_VERSION: 21
-  fast_finish: true
-
