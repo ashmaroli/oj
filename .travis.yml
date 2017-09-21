@@ -1,6 +1,5 @@
 os:
   - linux
-  - osx
 
 sudo: false
 env:
@@ -38,10 +37,6 @@ matrix:
     - gemfile: gemfiles/no_rails.gemfile
       rvm: 2.3.3
     - gemfile: gemfiles/no_rails.gemfile
-      rvm: 2.3.5
-    - gemfile: gemfiles/no_rails.gemfile
-      rvm: 2.4.2
-    - gemfile: gemfiles/no_rails.gemfile
       rvm: 2.4.1
     - gemfile: gemfiles/rails_5.gemfile
       rvm: 2.4.1
@@ -61,12 +56,3 @@ matrix:
     - gemfile: gemfiles/rails_4.2.gemfile
       rvm: 2.4.1
       os: osx
-    - gemfile: gemfiles/rails_5.gemfile
-      rvm: 2.4.2
-      os: linux
-    - gemfile: gemfiles/rails_4.1.gemfile
-      rvm: 2.4.2
-      os: linux
-    - gemfile: gemfiles/rails_4.2.gemfile
-      rvm: 2.4.2
-      os: linux
